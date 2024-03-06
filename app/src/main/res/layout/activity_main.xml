@@ -22,7 +22,7 @@
         android:id="@+id/tfMatrNumber"
         style="@style/Widget.AppCompat.AutoCompleteTextView"
         android:layout_width="188dp"
-        android:layout_height="41dp"
+        android:layout_height="48dp"
         android:layout_marginTop="49dp"
         android:layout_marginBottom="37dp"
         android:ems="10"
