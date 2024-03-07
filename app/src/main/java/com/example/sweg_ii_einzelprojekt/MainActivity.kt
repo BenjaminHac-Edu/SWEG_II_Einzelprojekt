@@ -29,10 +29,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         val matrNumberField = findViewById<TextView>(R.id.tfMatrNumber)
-        val button = findViewById<Button>(R.id.btnSend)
+        val buttonSend = findViewById<Button>(R.id.btnSend)
+        val buttonCalc = findViewById<Button>(R.id.btnCalc)
 
-
-        button.setOnClickListener {
+        buttonSend.setOnClickListener {
             val resultTextView = findViewById<TextView>(R.id.tvAnswerServer)
             Thread {
                 try {
@@ -52,5 +52,33 @@ class MainActivity : AppCompatActivity() {
                 }
             }.start()
         }
+
+        buttonCalc.setOnClickListener {
+            val result = CaclAlternierendeQuersumme(matrNumberField.text)
+            val calcResultTextView = findViewById<TextView>(R.id.tvSumme)
+
+            val isResultGerade = if(result.toInt() % 2 == 0) "Gerade" else "Ungerade"
+
+            runOnUiThread {
+                calcResultTextView.text = "The alternierende Quersumme of " + matrNumberField.text.toString() + " is: " + result + " \n Die Zahl ist " + isResultGerade
+            }
+        }
+    }
+    // https://de.wikipedia.org/wiki/Quersumme#Alternierende_Quersumme
+    // egal ob von links oder rechts gestartet wird
+    fun CaclAlternierendeQuersumme(number: CharSequence): String{
+        var usePlus = true
+        var result = 0
+
+        for (idx in number.length-1 downTo 0){
+            if(usePlus){
+                result += Integer.parseInt(number[idx].toString())
+            }else{
+                result -= Integer.parseInt(number[idx].toString())
+            }
+            usePlus = !usePlus
+        }
+
+        return result.toString()
     }
 }
