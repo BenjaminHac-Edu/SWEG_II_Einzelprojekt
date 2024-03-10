@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SWEG_II_Einzelprojekt</string>
+    <string name="CalcResult">The alternierende Quersumme of %s is: %s \n Die Zahl ist %s</string>
+    <string name="tvMatrNumber">Gib deine Matrikelnummer ein</string>
+    <string name="myMatrNumber">12223717</string>
+    <string name="answerServer">Antwort vom Server</string>
+    <string name="send">Abschicken</string>
+    <string name="calculate">Berechnen</string>
 </resources>

@@ -54,19 +54,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonCalc.setOnClickListener {
-            val result = CaclAlternierendeQuersumme(matrNumberField.text)
+            val result = caclAlternierendeQuersumme(matrNumberField.text)
             val calcResultTextView = findViewById<TextView>(R.id.tvSumme)
 
             val isResultGerade = if(result.toInt() % 2 == 0) "Gerade" else "Ungerade"
 
             runOnUiThread {
-                calcResultTextView.text = "The alternierende Quersumme of " + matrNumberField.text.toString() + " is: " + result + " \n Die Zahl ist " + isResultGerade
+                calcResultTextView.text = String.format(getString(R.string.CalcResult), matrNumberField.text.toString(), result, isResultGerade)
             }
         }
     }
     // https://de.wikipedia.org/wiki/Quersumme#Alternierende_Quersumme
     // egal ob von links oder rechts gestartet wird
-    fun CaclAlternierendeQuersumme(number: CharSequence): String{
+    private fun caclAlternierendeQuersumme(number: CharSequence): String{
         var usePlus = true
         var result = 0
 
